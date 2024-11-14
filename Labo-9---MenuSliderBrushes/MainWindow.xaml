@@ -6,18 +6,41 @@
         xmlns:local="clr-namespace:Labo_9___MenuSliderBrushes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="0" Content="Eerste getal:"/>
-        <TextBox Grid.Column="1" Grid.Row="0" Name="numberOneTextBox" HorizontalAlignment="Left" Width="100"/>
-        <Label Grid.Column="0" Grid.Row="1" Content="Tweede getal:"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Name="numberTwoTextBox" HorizontalAlignment="Left" Width="100"/>
-    </Grid>
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Bestand">
+                <MenuItem Header="Afsluiten" x:Name="menuItemAfsluiten" Click="MenuItemClicked"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Getallen" >
+                <MenuItem Header="Eerste getal" x:Name="menuItemEersteGetal" Click="MenuItemClicked"></MenuItem>
+                <Separator />
+                <MenuItem Header="Tweede getal" x:Name="menuItemTweedeGetal" Click="MenuItemClicked"></MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Eerste getal:"/>
+            <TextBox Grid.Column="1" Grid.Row="0" x:Name="numberOneTextBox" HorizontalAlignment="Left" Width="100" TextChanged="TextInputChanged"
+                     />
+            <Slider x:Name="sliderOneText"  Grid.Column="2" Grid.Row="0" Width="100" Margin="10 0" VerticalAlignment="Center"
+                    ValueChanged="sliderValueChanged" 
+                    Minimum="1" Maximum="5" TickFrequency="1" SmallChange="1" LargeChange="5" IsSnapToTickEnabled="True"/>
+            <Label Grid.Column="0" Grid.Row="1" Content="Tweede getal:"/>
+            <TextBox  Grid.Column="1" Grid.Row="1" x:Name="numberTwoTextBox" HorizontalAlignment="Left" Width="100" TextChanged="TextInputChanged"/>
+            <Slider x:Name="sliderTwoText"  Grid.Column="2" Grid.Row="1" Width="100" Margin="10 0" VerticalAlignment="Center"
+                    ValueChanged="sliderValueChanged" 
+                    Minimum="1" Maximum="5" TickFrequency="1" IsSnapToTickEnabled="True" SmallChange="1" LargeChange="5"/>
+        </Grid>
+    </DockPanel>
+
 </Window>
